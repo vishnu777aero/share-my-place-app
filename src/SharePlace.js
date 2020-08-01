@@ -7,6 +7,7 @@ class PlaceFinder {
     const locateUserButton = document.getElementById('locate-btn');
 
     locateUserButton.addEventListener('click', this.locateUserHandler);
+    locateUserButton.showSharableLink = this.showSharableLink;
     addressForm.addEventListener('submit', this.findAddressHandler);
   }
 
@@ -31,11 +32,18 @@ class PlaceFinder {
       console.table(coordinates);
 
       new Map(coordinates);
+      this.showSharableLink(coordinates);
     }, error => {
       modal.hide();
       alert('Could not locate you, please enter an address manually!');
       console.error(error);
-    })
+    });
+  }
+
+  showSharableLink(coordinates) {
+    const link = `https://www.google.com/maps/@${coordinates.lat},${coordinates.lng}`;
+    const sharableLink = document.getElementById('share-link');
+    sharableLink.value = link;
   }
 
   findAddressHandler() {
