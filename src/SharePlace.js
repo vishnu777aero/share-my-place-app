@@ -1,4 +1,5 @@
 import { Modal } from './UI/Modal';
+import { Map } from './UI/Map';
 
 class PlaceFinder {
   constructor() {
@@ -28,6 +29,8 @@ class PlaceFinder {
 
       console.info('Successfully located user!');
       console.table(coordinates);
+
+      new Map(coordinates);
     }, error => {
       modal.hide();
       alert('Could not locate you, please enter an address manually!');
