@@ -8,7 +8,10 @@ class PlaceFinder {
   }
 
   locateUserHandler() {
-
+    if (!navigator.geolocation) {
+      alert('Location feature not available, please enter an address manually');
+      return;
+    }
   }
 
   findAddressHandler() {
