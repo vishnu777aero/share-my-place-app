@@ -19,7 +19,8 @@ class PlaceFinder {
     modal.show();
 
     navigator.geolocation.getCurrentPosition(successResult => {
-      modal.hide();
+      setTimeout(() => modal.hide(), 1000); //just to enjoy the spinner
+      
       const coordinates = {
         lat: successResult.coords.latitude,
         lng: successResult.coords.longitude,
